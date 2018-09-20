@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+
+<body>
+
+    <div class="wrapper">
+       <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+    {%block menu%}
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="#" class="simple-text">
+                Loopis
+            </a>
+        </div>
+
+        <ul class="nav">
+         <li>
+           <a href="{% url 'lista_alunos' %}">
+             <i class="ti-user"></i>
+             <p>Alunos</p>
+         </a>
+     </li>
+
+     <li class="active">
+       <a href="{% url 'lista_professor'%}">
+         <i class="ti-ruler-pencil"></i>
+         <p>Professores</p>
+     </a>
+ </li>
+</ul>
+</div>
+</div>
+
+<div class="main-panel">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'lista_professor'%}">Professores</a>
+        </div>
+        
+
+    </div>
+</nav>
+{%endblock%}
+{%block content%}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+
+
+
+                    <div class="header">
+                        <h4 class="title">Dados dos Professor</h4>
+
+                    </div>
+
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>CPF</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Materia</th>
+                            </thead>
+                            <tbody>                                        
+                                {% for i in professores %}
+                                <tr>
+                                    <td>{{i.cpf}}</td>
+                                    <td><a href="{% url 'dados_professor' i.pk  %}">{{i.nome}}</a></td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.materia}}</td>
+
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    {%endblock%}
+
+
+

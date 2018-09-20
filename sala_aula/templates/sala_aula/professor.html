@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+
+
+{% block menu %}
+<div class="sidebar-wrapper">
+	<div class="logo">
+		<a href=# class="simple-text">
+			Loopis
+		</a>
+	</div>
+
+	<ul class="nav">
+		<li>
+			<a href="{% url 'lista_alunos' %}">
+				<i class="ti-user"></i>
+				<p>Alunos</p>
+			</a>
+		</li>
+
+		<li class="active">
+			<a href="{% url 'lista_professor' %}">
+				<i class="ti-ruler-pencil"></i>
+				<p>Professores</p>
+			</a>
+			<li class="has child active opened"  align="center"><i class=""></i><a>Dados do professor</a></li>
+
+
+
+		</ul>
+	</div>
+</div>
+
+<div class="main-panel">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar bar1"></span>
+					<span class="icon-bar bar2"></span>
+					<span class="icon-bar bar3"></span>
+				</button>  
+				<a class="navbar-brand" href="#">Professor</a>
+			</div>
+
+		</nav>
+		{%endblock%}
+
+
+
+
+
+
+		{% block content %}
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+
+
+							<div class="card">
+
+								<div class="content">
+
+									<p>Nome do Professor</p>
+									<label>{{object.nome}}</label>
+
+									<p>Cpf</p>
+									<label>{{object.cpf}}</label>
+
+									<p>idade</p>
+									<label>{{object.idade}}</label>
+
+									<p>Telefone</p>
+									<label>{{object.telefone}}</label>
+
+									<p>Materia</p>
+									<label>{{object.materia}}</label>
+
+									<br>
+									<br>
+
+
+									<div class="content table-responsive table-full-width">
+										<h4>Professor dos Alunos</h4>
+										<table class="table table-striped">
+											<thead>
+												<th>Aluno</th>
+												<th>Materia</th>
+												<th>Turma</th>
+											</thead>
+											{% for i in object.sala.all %}
+											<tbody>
+
+												<tr>
+													<td>															
+														<a href="{% url 'dados_aluno' i.aluno.pk  %}">{{ i.aluno.nome}}</a><br>
+													</td>
+													<td>{{i.professor.materia}}</td>
+													<td>{{i.sala.nome}}</td>
+												</tr>
+
+												{% endfor %}
+											</table>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endblock %}
+
+
+
+				{%block extende%}
+
+
+				<div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+					<a href="#" class="simple-text">
+						Loopis
+					</a>
+				</div><ul class="nav navbar-nav">
+				<li>
+					<a href="{% url 'lista_alunos' %}">
+						<i class="ti-user"></i>
+						<p>Alunos</p>
+					</a>
+				</li>
+
+				<li class="active">
+					<a href="{% url 'lista_professor' %}">
+						<i class="ti-ruler-pencil"></i>
+						<p>Professores</p>
+					</a>
+					<li class="has child active opened" align="right"><i class=""></i><a>Dados do professor</a></li>
+				</li>
+
+			</ul></div></div>
+
+
+
+
+
+
+
+
+
+			{%endblock%}
+

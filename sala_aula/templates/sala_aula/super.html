@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+{%block menu%}
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="#" class="simple-text">
+            loopis
+        </a>
+    </div>
+
+</div>
+</div>
+{%endblock%}
+{%block content%}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="main-panel">
+
+
+
+                        <div class="content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <center>
+                                        <h2>
+                                            Cadastros
+                                        </h2>
+                                    </center>
+                                </div>
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="{% url 'cadastro_aluno' %}">
+                                            <i class="ti-ruler-pencil"></i>
+                                            <p>Cadastro de Alunos</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="{% url 'cadastro_professor'%}">
+                                            <i class="ti-ruler-pencil"></i>
+                                            <p>Cadastro de Professores</p>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="active">
+                                        <a href="{% url 'cadastro_turma'%}">
+                                            <i class="ti-ruler-pencil"></i>
+                                            <p>Cadastro de turmas</p>
+                                        </a>
+
+                                    </li>
+
+                                     <li class="active">
+                                        <a href="{% url 'cadastro_sala'%}">
+                                            <i class="ti-ruler-pencil"></i>
+                                            <p>Cadastro de sala</p>
+                                        </a>
+
+                                    </li>
+
+                                </div>
+                                <a href="{% url 'lista_alunos' %}">
+                                    <h5>Voltar
+                                </a>
+
+                                </div>
+                            </div>
+
+                            {%endblock%}
+                            {%block extende%}
+
+                            <div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+                                <a href="#" class="simple-text">
+                                    loopis
+                                </a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="{% url 'lista_alunos' %}">
+                                        <i class="ti-user"></i>
+                                        <p>Alunos</p>
+                                    </a>
+                                </li>
+
+                                <li class="active">
+                                    <a href="{% url 'lista_professor' %}">
+                                        <i class="ti-ruler-pencil"></i>
+                                        <p>Professores</p>
+                                    </a>
+                                    <li class="has child active opened" align="right"><i class=""></i><a>Cadastro do Professor</a></li>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    {%endblock%}
+
+
+
+

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block menu%}
+
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href= #  class="simple-text">
+            loopis
+
+        </a>
+    </div>
+
+    <ul class="nav">
+        <li class="active">
+            <a href="{% url 'lista_alunos' %}">
+                <i class="ti-user"></i>
+                <p>Alunos</p>
+            </a>
+        </li>
+
+        <li>
+          <a href="{% url 'lista_professor' %}">
+            <i class="ti-ruler-pencil"></i>
+            <p>Professores</p>
+        </a>
+    </li>
+
+</ul>
+</div>
+</div>
+
+<div class="main-panel">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'lista_alunos' %}">Alunos</a>
+        </div>
+
+        
+    </div>
+</nav>
+
+{%endblock%}
+
+{%block content%}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Alunos</h4>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>CPF</th>
+                                <th>Nome</th>
+                                <th>email</th>
+                                <th>matricula</th>
+                            </thead>
+                            <tbody>
+                                {% for i in alunos %}
+                                <tr>
+                                    <td>{{i.cpf}}</td>
+                                    <td><a href="{% url 'dados_aluno' i.pk %}">{{i.nome}}</a></td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.matricula}}</td>
+                                </tr>
+                                {% endfor %}
+
+                                
+                                
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+
+{%block extende%}
+
+<div class="collapse navbar-collapse off-canvas-sidebar" data-background-color="white" data-active-color="danger"><div class="sidebar-wrapper"><div class="logo">
+  <a href= # class="simple-text">
+    Loopis
+
+</a>
+</div><ul class="nav navbar-nav">
+<li class="active">
+    <a href="{% url 'lista_alunos' %}">
+      <i class="ti-user"></i>
+      <p>Alunos</p>
+  </a>
+</li>
+
+<li>
+    <a href="{% url 'lista_professor' %}">
+      <i class="ti-ruler-pencil"></i>
+      <p>Professor</p>
+  </a>
+</li>
+
+</ul></div></div>
+
+
+{%endblock%}
